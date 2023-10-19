@@ -1,0 +1,35 @@
+
+
+// From the frontend part i need to grab some data and send it to server just like we do in a regular application using axios or fetch
+// But here is a problem: 
+// In the recent version of nextjs everything is server component 
+// and server component dont have access to anything that is on the frontend side, it is on server
+
+// Anything thats on the server side needs can access everything on the server side (file sytem or anything thats on the sever side)
+// Anything thats on the frontend part - useEffect, useState, Windows location, the url, anything on the page thats on the client side and you have to expicitly 
+// make your application as a client side. "use client" is the way.
+
+// Hint
+
+// Most of the things in the api folder are on the backend side
+// But anything outside is not always but usually a client component.
+
+// In this case we want to take data from the signup form and send it to backend
+
+
+// In nextjs request response is little bit different from expressjs
+
+
+// All the console.log() inside "use client" files will appear in browser
+// All the console.log() inside api folder will appear in terminal.
+
+// Middleware in nextsj are quite different.
+
+
+// can keep userModel as .ts also, but nothing sensitive is happening in this so kept it .js
+
+// In case of nextjs, there is a special way how we export models from moongose.
+// because there are chances that the model might have created in the database.
+// In most of the cases in expressjs the model file doesnt run again and again automatically.
+// but here we need to handle if it is already created or not.
+ 
