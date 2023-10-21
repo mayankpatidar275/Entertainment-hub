@@ -29,6 +29,17 @@ export default function Home() {
             />
           </div>
         </section>
+
+        <section className="mb-12">
+          <h2 className="text-3xl font-semibold mb-4">Hit the bubble</h2>
+          <div className="border border-gray-300 rounded overflow-hidden">
+            <Iframe
+              url={process.env.URL_TO_BUBBLE_PROJECT || "https://google.com"}
+              width="100%"
+              height="600px"
+            />
+          </div>
+        </section>
       </div>
     </div>
   );
