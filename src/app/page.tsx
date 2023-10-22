@@ -1,4 +1,5 @@
 import Iframe from 'react-iframe';
+import Jokes from './jokes/page';
 
 export default function Home() {
   return (
@@ -8,6 +9,14 @@ export default function Home() {
       </div>
 
       <div className="p-4 m-8">
+
+        <section className="mb-12">
+            <h2 className="text-3xl font-semibold mb-4">Jokes</h2>
+            <div className="border border-gray-300 rounded overflow-hidden bg-blue-200">
+              <Jokes />
+            </div>
+        </section>
+
         <section className="mb-12">
           <h2 className="text-3xl font-semibold mb-4">Jump the Obstacles</h2>
           <div className="border border-gray-300 rounded overflow-hidden">
