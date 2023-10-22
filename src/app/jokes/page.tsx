@@ -1,24 +1,28 @@
 "use client"
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setJoke, setLoading, selectJoke, selectLoading } from '../redux/slice';
 import axios from 'axios';
 
 function Jokes() {
-  const [joke, setJoke] = useState('');
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const joke = useSelector(selectJoke);
+  const loading = useSelector(selectLoading);
 
   const getJoke = async () => {
-    setLoading(true);
+    dispatch(setLoading(true));
+
     try {
-      const response = await axios.get('/api/users/jokes'); // Request to the server
+      const response = await axios.get('/api/users/jokes');
       if (response.status === 200) {
-        setJoke(response.data.jokeText);
+        dispatch(setJoke(response.data.jokeText));
       } else {
-        setJoke('Failed to fetch joke. Please try again later.');
+        dispatch(setJoke('Failed to fetch joke. Please try again later.'));
       }
     } catch (error) {
-      setJoke('An error occurred while fetching the joke.');
+      dispatch(setJoke('An error occurred while fetching the joke.'));
     } finally {
-      setLoading(false);
+      dispatch(setLoading(false));
     }
   };
 
