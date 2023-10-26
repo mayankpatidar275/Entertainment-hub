@@ -5,20 +5,14 @@ import {useRouter} from "next/navigation";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
-
-
-
-
 export default function LoginPage() {
     const router = useRouter();
     const [user, setUser] = React.useState({
-        email: "",
-        password: "",
-       
+        email: "testuser@gmail.com",
+        password: "testuserpassword",
     })
     const [buttonDisabled, setButtonDisabled] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
-
 
     const onLogin = async () => {
         try {
@@ -44,33 +38,58 @@ export default function LoginPage() {
     }, [user]);
 
     return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        <h1>{loading ? "Processing" : "Login"}</h1>
-        <hr />
-        
-        <label htmlFor="email">email</label>
-        <input 
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
-            id="email"
-            type="text"
-            value={user.email}
-            onChange={(e) => setUser({...user, email: e.target.value})}
-            placeholder="email"
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+          
+          <div className="text-blue-500 hover:underline ml-4 mt-4 absolute left-0 top-0">
+            <Link href="/">
+              Back to Home
+            </Link>
+          </div>
+          
+          <h1 className="text-3xl font-semibold mb-4">{loading ? "Processing" : "Login"}</h1>
+          <hr className="w-20 border-t border-gray-600 mb-4" />
+    
+          <div className="w-64">
+            <label htmlFor="email" className="block mb-2 font-semibold">Email</label>
+            <input
+              id="email"
+              type="text"
+              className="w-full p-2 border rounded-md focus:ring focus:ring-gray-400"
+              value={user.email}
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              placeholder="Email"
             />
-        <label htmlFor="password">password</label>
-        <input 
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
-            id="password"
-            type="password"
-            value={user.password}
-            onChange={(e) => setUser({...user, password: e.target.value})}
-            placeholder="password"
+    
+            <label htmlFor="password" className="block mt-4 mb-2 font-semibold">Password</label>
+            <input
+              id="password"
+              type="password"
+              className="w-full p-2 border rounded-md focus:ring focus:ring-gray-400"
+              value={user.password}
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
+              placeholder="Password"
             />
+    
             <button
-            onClick={onLogin}
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">Login here</button>
-            <Link href="/signup">Visit Signup page</Link>
+              onClick={onLogin}
+              className={`w-full p-2 mt-6 border rounded-md focus:ring ${
+                buttonDisabled
+                  ? "bg-gray-300 cursor-not-allowed"
+                  : "bg-blue-500 text-white hover:bg-blue-600"
+              }`}
+              disabled={buttonDisabled}
+            >
+              {loading ? "Processing..." : "Login"}
+            </button>
+    
+            <p className="text-gray-600 mt-4">
+              Do not have an account?{" "}
+              <Link href="/signup" className="text-blue-500 hover:underline">
+                Visit Signup page
+              </Link>
+            </p>
+          </div>
         </div>
-    )
+      );
 
 }

@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setJoke, setLoading, selectJoke, selectLoading } from '../redux/slice';
+import { setJoke, setLoading, selectJoke, selectLoading } from '../../redux/slice';
 import axios from 'axios';
 
 function Jokes() {
@@ -28,7 +28,7 @@ function Jokes() {
 
   return (
     <div className="w-full max-w-md mx-auto p-4 bg-white rounded-lg shadow-lg">
-      <div className="text-xl font-semibold mb-4">Here is a Programming Joke for You!</div>
+      <div className="text-xl font-semibold mb-4">Please laugh on my dead jokes! 😂</div>
       <div className="p-4 border border-gray-200 bg-gray-100 rounded-lg mb-4" style={{ height: '130px', overflowY: 'auto' }}>
         {loading ? 'Loading...' : joke}
       </div>

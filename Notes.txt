@@ -33,3 +33,13 @@
 // In most of the cases in expressjs the model file doesnt run again and again automatically.
 // but here we need to handle if it is already created or not.
  
+
+
+ // Problem : the iframe data is not loading on navigation. It works on reloading.
+
+// .env.local > .env, meaning that if a variable exists in both files, the value from .env.local will be used during local development.
+
+// url={process.env.URL_TO_BUBBLE_PROJECT! }
+// ---> this ! is not required if we set the env variables in next.config.js
+
+// Note that environment variables that are prefixed with NEXT_PUBLIC_ will be available to the client, while environment variables that are not prefixed with NEXT_PUBLIC_ will only be available to the server.
